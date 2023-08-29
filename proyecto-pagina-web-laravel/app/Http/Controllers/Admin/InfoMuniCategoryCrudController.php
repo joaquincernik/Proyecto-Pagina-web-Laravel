@@ -84,18 +84,18 @@ class InfoMuniCategoryCrudController extends CrudController
         CRUD::setValidation(InfoMuniCategoryRequest::class);
         //CRUD::setFromDb(); // set fields from db columns.
 
-        CRUD::field('image')->type('upload')->label('Pon tu imagen')->withFiles([
+        CRUD::field('image')->type('upload')->label('Imagen')->withFiles([
             'disk' => 'public', // the disk where file will be stored
             'path' => 'uploads/infomuni',
         ]);
         CRUD::field([
             'name'      => 'datein',
-            'label'     => 'fecha de entrada',
+            'label'     => 'Fecha de entrada',
             'type'      => 'datetime',
         ]);
         CRUD::field([
             'name'      => 'dateout',
-            'label'     => 'fecha de salida',
+            'label'     => 'Fecha de salida',
             'type'      => 'datetime',
         ]);
         /**
