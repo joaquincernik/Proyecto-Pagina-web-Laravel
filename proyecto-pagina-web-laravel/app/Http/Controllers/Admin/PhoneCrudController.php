@@ -28,7 +28,7 @@ class PhoneCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Phone::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/phone');
-        CRUD::setEntityNameStrings('phone', 'phones');
+        CRUD::setEntityNameStrings('Teléfono', 'Teléfonos utiles');
     }
 
     /**
@@ -40,7 +40,7 @@ class PhoneCrudController extends CrudController
     protected function setupListOperation()
     {
         //CRUD::setFromDb(); // set columns from db columns.
-        CRUD::column('image')->type('image')->prefix('storage/');
+        //CRUD::column('image')->type('image')->prefix('storage/');
 
         CRUD::column('title');
         /*->wrapper([
@@ -66,19 +66,20 @@ class PhoneCrudController extends CrudController
         CRUD::setValidation(PhoneRequest::class);
 
         //CRUD::setFromDb(); // set fields from db columns.
-        CRUD::field('image')->type('upload')->label('Pon tu imagen')->withFiles([
-                'disk' => 'public', // the disk where file will be stored
-                'path' => 'uploads',
-        ]);
+        //CRUD::field('image')->type('upload')->label('Pon tu imagen')->withFiles([
+        //        'disk' => 'public', // the disk where file will be stored
+        //        'path' => 'uploads',
+        //]);
+        
         CRUD::field([
             'name'      => 'title',
-            'label'     => 'titulo',
+            'label'     => 'Descripción',
             'type'      => 'text',
         ]);
         CRUD::field([
             'name'      => 'content',
-            'label'     => 'contenido',
-            'type'      => 'text',
+            'label'     => 'Número telefónico',
+            'type'      => 'number',
         ]);
 
         /**
