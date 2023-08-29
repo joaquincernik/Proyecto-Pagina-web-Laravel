@@ -85,30 +85,35 @@ class InfocoopCrudController extends CrudController
         CRUD::setValidation(InfocoopRequest::class);
    //     CRUD::setFromDb(); // set fields from db columns.
 
-        CRUD::field('image')->type('upload')->label('Pon tu imagen')->withFiles([
-            'disk' => 'public', // the disk where file will be stored
-            'path' => 'uploads/infocoop',
-        ]);
         CRUD::field([
             'name'      => 'title',
-            'label'     => 'titulo',
+            'label'     => 'Título',
             'type'      => 'text',
         ]);
         CRUD::field([
             'name'      => 'content',
-            'label'     => 'contenido',
+            'label'     => 'Contenido',
             'type'      => 'text',
         ]);
+
+
+        CRUD::field('image')->type('upload')->label('Imagen')->withFiles([
+            'disk' => 'public', // the disk where file will be stored
+            'path' => 'uploads/infocoop',
+        ]);
+
+        
         CRUD::field([
         'name'      => 'datein',
-        'label'     => 'fecha de entrada',
+        'label'     => 'Fecha de entrada',
         'type'      => 'datetime',
     ]);
         CRUD::field([
             'name'      => 'dateout',
-            'label'     => 'fecha de salida',
+            'label'     => 'Fecha de salida',
             'type'      => 'datetime',
         ]);
+
 
         /**
          * Fields can be defined using the fluent syntax:
