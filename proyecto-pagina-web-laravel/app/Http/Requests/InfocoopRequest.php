@@ -27,7 +27,7 @@ class InfocoopRequest extends FormRequest
     public function rules()
     {
         return[
-            'image'=>'required_without_all:title,content|image',
+            'image'=>'prohibits:title,prohibits:content,required_without_all:title,content|image',
             'title'=>'required_with:content|required_without:image',
             'content'=>'required_with:title|required_without:image',
             'datein'=>'required',
