@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\PhoneRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Backpack\CRUD\app\Library\Widget;
 
 /**
  * Class PhoneCrudController
@@ -42,12 +43,27 @@ class PhoneCrudController extends CrudController
         //CRUD::setFromDb(); // set columns from db columns.
         //CRUD::column('image')->type('image')->prefix('storage/');
 
+        $userCount = \App\Models\Phone::count();
+
+
+            //widget made using fluent syntax
+        
+            Widget::add(
+                [
+
+                    'type'       => 'card',
+                    'class'   => 'card bg-dark text-white',
+                    'wrapper' => ['class' => 'col-sm-3 col-md-3'],
+                    'content'    => [
+                        'header' => 'Cantidad de telefonos',
+                        'body'   => $userCount,
+                    ]
+                ]
+            )->name('widgetPhone');
+
+
+
         CRUD::column('title');
-        /*->wrapper([
-            'href'=>function($crud,$column,$entry){
-            return backpack_url('phone/'.$entry->id.'/show');
-            },
-        ]);*/
         CRUD::column('content');
         /**
          * Columns can be defined using the fluent syntax:
@@ -70,7 +86,7 @@ class PhoneCrudController extends CrudController
         //        'disk' => 'public', // the disk where file will be stored
         //        'path' => 'uploads',
         //]);
-        
+
         CRUD::field([
             'name'      => 'title',
             'label'     => 'Descripción',
