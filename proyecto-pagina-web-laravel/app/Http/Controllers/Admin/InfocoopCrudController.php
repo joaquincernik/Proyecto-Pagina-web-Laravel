@@ -13,6 +13,7 @@ use Carbon\Carbon;
  */
 class InfocoopCrudController extends CrudController
 {
+    public $numberOfActives=0;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
@@ -20,11 +21,16 @@ class InfocoopCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ReorderOperation;
 
+
+
+
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
      *
      * @return void
      */
+
+
     public function setup()
     {
         CRUD::setModel(\App\Models\Infocoop::class);
@@ -49,6 +55,7 @@ class InfocoopCrudController extends CrudController
             'type' => 'closure',
             'function'=> function($entry){
                 if($this->getEstado($entry->datein,$entry->dateout)){
+                    $this->numberOfActives++;
                     return 'SI';
                 }
                 else{
@@ -102,7 +109,7 @@ class InfocoopCrudController extends CrudController
             'path' => 'uploads/infocoop',
         ]);
 
-        
+
         CRUD::field([
         'name'      => 'datein',
         'label'     => 'Fecha de entrada',
@@ -154,5 +161,9 @@ class InfocoopCrudController extends CrudController
         } else {
             return 0;
         }
+    }
+
+    public function getNumberOfActives(){
+        return $this->numberOfActives;
     }
 }

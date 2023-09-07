@@ -40,28 +40,6 @@ class PhoneCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        //CRUD::setFromDb(); // set columns from db columns.
-        //CRUD::column('image')->type('image')->prefix('storage/');
-
-        $userCount = \App\Models\Phone::count();
-
-
-            //widget made using fluent syntax
-        
-            Widget::add(
-                [
-
-                    'type'       => 'card',
-                    'class'   => 'card bg-dark text-white',
-                    'wrapper' => ['class' => 'col-sm-3 col-md-3'],
-                    'content'    => [
-                        'header' => 'Cantidad de telefonos',
-                        'body'   => $userCount,
-                    ]
-                ]
-            )->name('widgetPhone');
-
-
 
         CRUD::column('title');
         CRUD::column('content');
