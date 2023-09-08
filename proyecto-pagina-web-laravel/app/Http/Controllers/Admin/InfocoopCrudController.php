@@ -13,7 +13,6 @@ use Carbon\Carbon;
  */
 class InfocoopCrudController extends CrudController
 {
-    public $numberOfActives=0;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
@@ -22,6 +21,8 @@ class InfocoopCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\ReorderOperation;
 
 
+    /* ACLARACION: para modicificar la vista de la pagina principal del dashboard
+    modificar lo siguiente :storage/framework/views/b78a18f98ec3b5a269345b4b7f4aa7dc.php*/
 
 
     /**
@@ -55,7 +56,6 @@ class InfocoopCrudController extends CrudController
             'type' => 'closure',
             'function'=> function($entry){
                 if($this->getEstado($entry->datein,$entry->dateout)){
-                    $this->numberOfActives++;
                     return 'SI';
                 }
                 else{
@@ -163,7 +163,5 @@ class InfocoopCrudController extends CrudController
         }
     }
 
-    public function getNumberOfActives(){
-        return $this->numberOfActives;
-    }
+
 }
