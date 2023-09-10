@@ -66,11 +66,11 @@ Widget::add(
             //Widget de Infomuni
             ['type'          => 'progress_white',
             'class'         => 'card mb-2',
-            'value'         => $infoMuniCount,
-            'description'   => '<h3>Cantidad de canales en <b>Info Municipal </b></h3>
-               Noticias activas:'.$infoMuniActiveCounter.'<br>
+            'value'         => $infoMuniActiveCounter,
+            'description'   => '<h3>Cantidad de noticias activas en <b>Info Municipal </b></h3>
                Noticias programadas:'.$infoMuniProgrammedCounter.'<br>
-               Noticias vencidas:'.$infoMuniExpiredCounter,
+               Noticias vencidas:'.$infoMuniExpiredCounter.'<br>
+               Cantidad total de noticias:'.$infoMuniCount,
              'progress'      => $infoMuniActiveCounter/$infoMuniCount, // integer
             'progressClass' => 'progress-bar bg-primary',
             ],
@@ -78,11 +78,11 @@ Widget::add(
             //Widget de Infocoop
             ['type'          => 'progress_white',
                 'class'         => 'card mb-2',
-                'value'         => $infoCoopCount,
-                'description'   => '<h3>Cantidad de canales en <b>Info Cooperativa </b></h3>
-               Noticias activas:'.$infoCoopActiveCounter.'<br>
+                'value'         => $infoCoopActiveCounter,
+                'description'   => '<h3>Cantidad de noticias activas en <b>Info Cooperativa </b></h3>
                Noticias programadas:'.$infoCoopProgrammedCounter.'<br>
-               Noticias vencidas:'.$infoCoopExpiredCounter,
+               Noticias vencidas:'.$infoCoopExpiredCounter.'<br>
+               Cantidad total de noticias:'.$infoCoopCount,
                 'progress'      => $infoCoopActiveCounter/$infoCoopCount, // integer
                 'progressClass' => 'progress-bar bg-primary',
             ],
@@ -91,7 +91,7 @@ Widget::add(
             ['type'          => 'progress_white',
                 'class'         => 'card mb-2',
                 'value'         => $infoMuniCount,
-                'description'   => '<h3>Cantidad de canales en <b>Info Remises</b></h3>',
+                'description'   => '<h3>Cantidad de noticias en <b>Info Remises</b></h3>',
                 'progress'      => $infoTaxiCount/100, // integer
                 'progressClass' => 'progress-bar bg-primary',
 
