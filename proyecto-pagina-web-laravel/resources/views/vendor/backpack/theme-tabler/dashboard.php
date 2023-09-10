@@ -27,7 +27,7 @@ foreach ($infoCoopArray as $channel){
         $infoCoopActiveCounter++;
     }
     else{
-        if($fechaActual>$fechaInicio){
+        if($fechaActual<$fechaInicio){
             $infoCoopProgrammedCounter++;
         }
         if($fechaActual>$fechaFinal){
@@ -47,7 +47,7 @@ foreach ($infoMuniArray as $channel){
         $infoMuniActiveCounter++;
     }
     else{
-        if($fechaActual>$fechaInicio){
+        if($fechaActual<$fechaInicio){
             $infoMuniProgrammedCounter++;
         }
         if($fechaActual>$fechaFinal){
@@ -67,26 +67,31 @@ Widget::add(
             ['type'          => 'progress_white',
             'class'         => 'card mb-2',
             'value'         => $infoMuniCount,
-            'description'   => 'Cantidad de canales en Info Municipal',
-             'progress'      => $infoMuniCount/100, // integer
+            'description'   => '<h3>Cantidad de canales en <b>Info Municipal </b></h3>
+               Noticias activas:'.$infoMuniActiveCounter.'<br>
+               Noticias programadas:'.$infoMuniProgrammedCounter.'<br>
+               Noticias vencidas:'.$infoMuniExpiredCounter,
+             'progress'      => $infoMuniActiveCounter/$infoMuniCount, // integer
             'progressClass' => 'progress-bar bg-primary',
             ],
 
             //Widget de Infocoop
-            [ 'type'          => 'progress_white',
+            ['type'          => 'progress_white',
                 'class'         => 'card mb-2',
                 'value'         => $infoCoopCount,
-                'description'   => 'Cantidad de canales en Info Cooperativa',
-                'progress'      => $infoCoopCount/100, // integer
+                'description'   => '<h3>Cantidad de canales en <b>Info Cooperativa </b></h3>
+               Noticias activas:'.$infoCoopActiveCounter.'<br>
+               Noticias programadas:'.$infoCoopProgrammedCounter.'<br>
+               Noticias vencidas:'.$infoCoopExpiredCounter,
+                'progress'      => $infoCoopActiveCounter/$infoCoopCount, // integer
                 'progressClass' => 'progress-bar bg-primary',
-
             ],
 
             //Widget de Infotaxi
             ['type'          => 'progress_white',
                 'class'         => 'card mb-2',
                 'value'         => $infoMuniCount,
-                'description'   => 'Cantidad de canales en Info Remises',
+                'description'   => '<h3>Cantidad de canales en <b>Info Remises</b></h3>',
                 'progress'      => $infoTaxiCount/100, // integer
                 'progressClass' => 'progress-bar bg-primary',
 
@@ -95,64 +100,11 @@ Widget::add(
             ['type'          => 'progress_white',
                 'class'         => 'card mb-2',
                 'value'         => $phoneCount,
-                'description'   => 'Cantidad de telefonos',
+                'description'   => '<h3>Cantidad de <b>telefonos</b></h3>',
                 'progress'      => $phoneCount/100, // integer
                 'progressClass' => 'progress-bar bg-primary',
             ],
 
-            //Widget de cantidad de canales activos en Infocooop
-            ['type'          => 'progress_white',
-                'class'         => 'card mb-2',
-                'value'         => $infoCoopActiveCounter,
-                'description'   => 'Cantidad de canales activos en Info Cooperativa',
-                'progress'      => $infoCoopActiveCounter/100, // integer
-                'progressClass' => 'progress-bar bg-primary',
-            ],
-
-            //Widget de cantidad de canales activos en InfoMuni
-            ['type'          => 'progress_white',
-                'class'         => 'card mb-2',
-                'value'         => $infoMuniActiveCounter,
-                'description'   => 'Cantidad de canales activos en Info Municipal',
-                'progress'      => $infoMuniActiveCounter/100, // integer
-                'progressClass' => 'progress-bar bg-primary',
-            ],
-
-            //Widget de canales vencidos en infoocopp
-            ['type'          => 'progress_white',
-                'class'         => 'card mb-2',
-                'value'         => $infoCoopExpiredCounter,
-                'description'   => 'Cantidad de canales vencidos en Info Cooperativa',
-                'progress'      => $infoCoopExpiredCounter/100, // integer
-                'progressClass' => 'progress-bar bg-primary',
-            ],
-
-            //Widget de canales vencidos en INfomuni
-            ['type'          => 'progress_white',
-                'class'         => 'card mb-2',
-                'value'         => $infoMuniExpiredCounter,
-                'description'   => 'Cantidad de canales vencidos en Info Municipal',
-                'progress'      => $infoMuniExpiredCounter/100, // integer
-                'progressClass' => 'progress-bar bg-primary',
-            ],
-
-            //Widget de canales programados en Infocop
-            ['type'          => 'progress_white',
-                'class'         => 'card mb-2',
-                'value'         => $infoCoopProgrammedCounter,
-                'description'   => 'Cantidad de canales programados en Info Cooperativa',
-                'progress'      => $infoCoopProgrammedCounter/100, // integer
-                'progressClass' => 'progress-bar bg-primary',
-            ],
-
-            //Widget de canales programados en Infomuni
-            ['type'          => 'progress_white',
-                'class'         => 'card mb-2',
-                'value'         => $infoMuniProgrammedCounter,
-                'description'   => 'Cantidad de canales programados en Info Municipal',
-                'progress'      => $infoMuniProgrammedCounter/100, // integer
-                'progressClass' => 'progress-bar bg-primary',
-            ],
         ]
     ]
 );
