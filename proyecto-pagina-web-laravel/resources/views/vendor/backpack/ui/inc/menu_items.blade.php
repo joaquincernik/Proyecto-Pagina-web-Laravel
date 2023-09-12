@@ -5,3 +5,7 @@
 <x-backpack::menu-item title="Info Cooperativa" icon="la la-question" :link="backpack_url('infocoop')" />
 <x-backpack::menu-item title="Info Municipal" icon="la la-question" :link="backpack_url('infoMuni')" />
 <x-backpack::menu-item title="Info Remises" icon="la la-question" :link="backpack_url('infoTaxi')" />
+
+<x-backpack::menu-item title="Pharmacies" icon="la la-question" :link="backpack_url('pharmacy')" />
+<x-backpack::menu-item title="Exception pharmacies" icon="la la-question" :link="backpack_url('exception-pharmacy')" />
+<x-backpack::menu-item title="Social services" icon="la la-question" :link="backpack_url('social-service')" />

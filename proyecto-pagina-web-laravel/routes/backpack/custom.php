@@ -21,4 +21,7 @@ Route::group([
     Route::crud('infocoop', 'InfocoopCrudController');
     Route::crud('infoMuni', 'InfoMuniCategoryCrudController');
     Route::crud('infoTaxi', 'InfoTaxiCrudController');
+    Route::crud('pharmacy', 'PharmacyCrudController');
+    Route::crud('exception-pharmacy', 'ExceptionPharmacyCrudController');
+    Route::crud('social-service', 'SocialServiceCrudController');
 }); // this should be the absolute last line of this file
