@@ -37,7 +37,9 @@ class Pharmacy extends Model
     |--------------------------------------------------------------------------
     */
 
-
+    public function exception_pharmacies(){
+        return $this->hasOne(\App\Models\ExceptionPharmacy::class);
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES

@@ -56,19 +56,40 @@ class ExceptionPharmacyCrudController extends CrudController
     protected function setupCreateOperation()
     {
         CRUD::setValidation(ExceptionPharmacyRequest::class);
-       // CRUD::setFromDb(); // set fields from db columns.
+        //CRUD::setFromDb(); // set fields from db columns.
         CRUD::field([
             'name'      => 'date',
             'label'     => 'Fecha',
             'type'      => 'date',
+            'default'   => '2018-09-12'
         ]);
-        CRUD::field([
+      /*  CRUD::field([
             'label'=>'Farmacia',
             'type' => 'select',
-            'name' => 'pharmacies', // the relationship name in your Model
+            'name' => 'idPharmacy', // the relationship name in your Model
             'entity' => 'pharmacies', // the relationship name in your Model
-            'attribute' => 'name', // attribute on Article that is shown to admin
-            'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
+            'attribute' => 'idPharmacy', // attribute on Article that is shown to admin
+            'default'=> 1,
+        ]);*/
+        CRUD::field([  // Select
+            'label'     => "Category",
+            'type'      => 'select',
+            'name'      => 'idPharmacy', // the db column for the foreign key
+            'pivot'     => true, // on create&update, do you need to add/delete pivot table entries?
+
+            // optional
+            // 'entity' should point to the method that defines the relationship in your Model
+            // defining entity will make Backpack guess 'model' and 'attribute'
+            'entity'    => 'pharmacies',
+
+            // optional - manually specify the related model and attribute
+            'model'     => "App\Models\Pharmacy", // related model
+            'attribute' => 'name', // foreign key attribute that is shown to user
+
+            // optional - force the related options to be a custom query, instead of all();
+          /*  'options'   => (function ($query) {
+                return $query->orderBy('name', 'ASC')->where('depth', 1)->get();
+            }), //  you can use this to filter the results show in the select*/
         ]);
         /**
          * Fields can be defined using the fluent syntax:

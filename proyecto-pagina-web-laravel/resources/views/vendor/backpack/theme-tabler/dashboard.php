@@ -104,6 +104,17 @@ Widget::add(
                 'progress'      => $phoneCount/100, // integer
                 'progressClass' => 'progress-bar bg-primary',
             ],
+            [
+                'type'       => 'card',
+                 'wrapper' => ['class' => 'col-sm-6 col-md-4',
+                               'style' => 'width:100%;',], // optional
+                 'class'   => 'card bg-dark text-white', // optional
+                'content'    => [
+                    'header' => '<h1 style="text-align: center">Captura de pantalla</h1>', // optional
+                    'body'   => '<img style="width: 100%" src="http://181.118.186.249:9000/retornores.png">',
+
+                ]
+            ],
 
         ]
     ]

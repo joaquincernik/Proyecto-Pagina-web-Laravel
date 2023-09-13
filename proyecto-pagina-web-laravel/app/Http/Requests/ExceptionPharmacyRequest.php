@@ -27,7 +27,7 @@ class ExceptionPharmacyRequest extends FormRequest
     public function rules()
     {
         return[
-            'idPharmacy'=>'required',
+            //'idPharmacy'=>'required',
             'date'=>'required'
         ];
 

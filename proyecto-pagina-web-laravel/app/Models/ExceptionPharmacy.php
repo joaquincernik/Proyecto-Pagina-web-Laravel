@@ -21,7 +21,7 @@ class ExceptionPharmacy extends Model
 
     protected $table = 'exception_pharmacies';
     // protected $primaryKey = 'id';
-    // public $timestamps = false;
+    public $timestamps = false;
     protected $guarded = ['id'];
      protected $fillable = ['idPharmacy','date'];
     // protected $hidden = [];
@@ -40,7 +40,7 @@ class ExceptionPharmacy extends Model
 
     //Aqui se establece la relacion
     public function pharmacies(){
-        return $this->hasOne(\App\Models\Pharmacy::class);
+        return $this->belongsTo(\App\Models\Pharmacy::class,'idPharmacy');
     }
     /*
     |--------------------------------------------------------------------------
