@@ -111,7 +111,7 @@ Widget::add(
                  'class'   => 'card bg-dark text-white', // optional
                 'content'    => [
                     'header' => '<h1 style="text-align: center">Captura de pantalla</h1>', // optional
-                    'body'   => '<img style="width: 100%" src="http://181.118.186.249:9000/retornores.png">',
+                    'body'   => ' <iframe src="http://181.118.186.249:9000/retorno.html" width="750" height="450"></iframe>',
 
                 ]
             ],
