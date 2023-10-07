@@ -48,8 +48,12 @@ class InfocoopCrudController extends CrudController
 
     protected function setupListOperation()
     {
-        CRUD::column('image')->type('image')->prefix('storage/');
-        CRUD::setFromDb(); // set columns from db columns.
+        CRUD::column('image')->label("Imagen")->type('image')->prefix('storage/');
+       CRUD::column('title')->label("titulo")->type('text');
+       CRUD::column('content')->label("contenido")->type('text');
+       CRUD::column('datein')->label("fecha de entrada")->type('datetime');
+       CRUD::column('dateout')->label("fecha de finalizacion")->type('datetime');
+       // CRUD::setFromDb(); // set columns from db columns.
         CRUD::addColumn([
             'name' => 'ACTIVO', // Nombre de la columna en la base de datos
             'label' => 'ACTIVO',

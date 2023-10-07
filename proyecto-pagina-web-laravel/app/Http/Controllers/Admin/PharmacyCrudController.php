@@ -18,6 +18,7 @@ class PharmacyCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\ReorderOperation;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -73,5 +74,13 @@ class PharmacyCrudController extends CrudController
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+    }
+    protected function setupReorderOperation()
+    {
+        // define which model attribute will be shown on draggable elements
+        CRUD::set('reorder.label', 'title');
+        // define how deep the admin is allowed to nest the items
+        // for infinite levels, set it to 0
+        CRUD::set('reorder.max_level', 2);
     }
 }

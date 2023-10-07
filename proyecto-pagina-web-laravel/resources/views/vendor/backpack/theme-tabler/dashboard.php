@@ -4,6 +4,7 @@ use Backpack\CRUD\app\Library\Widget;
 
 //Defnimos las variables donde almacenaremos la cantidad de Canales y telefonos en las variables
 $phoneCount = \App\Models\Phone::count();
+$socialServiceCount = \App\Models\SocialService::count();
 $infoMuniCount = \App\Models\InfoMuniCategory::count();
 $infoTaxiCount = \App\Models\InfoTaxi::count();
 $infoCoopCount = \App\Models\Infocoop::count();
@@ -65,7 +66,8 @@ Widget::add(
 
             //Widget de Infomuni
             ['type'          => 'progress_white',
-            'class'         => 'card mb-2',
+            'wrapper' => ['class' => 'col-sm-6 col-md-6 mb-4'], // optional
+            'class'   => 'card bg-dark text-white',
             'value'         => $infoMuniActiveCounter,
             'description'   => '<h3>Cantidad de noticias activas en <b>Info Municipal </b></h3>
                Noticias programadas:'.$infoMuniProgrammedCounter.'<br>
@@ -77,7 +79,8 @@ Widget::add(
 
             //Widget de Infocoop
             ['type'          => 'progress_white',
-                'class'         => 'card mb-2',
+            'wrapper' => ['class' => 'col-sm-6 col-md-6 mb-4'], // optional
+            'class'   => 'card bg-dark text-white',
                 'value'         => $infoCoopActiveCounter,
                 'description'   => '<h3>Cantidad de noticias activas en <b>Info Cooperativa </b></h3>
                Noticias programadas:'.$infoCoopProgrammedCounter.'<br>
@@ -89,29 +92,30 @@ Widget::add(
 
             //Widget de Infotaxi
             ['type'          => 'progress_white',
-                'class'         => 'card mb-2',
-                'value'         => $infoMuniCount,
+            'wrapper' => ['class' => 'col-sm-6 col-md-6 mb-4'], // optional
+            'class'   => 'card bg-dark text-white',
+                'value'         => $infoTaxiCount,
                 'description'   => '<h3>Cantidad de noticias en <b>Info Remises</b></h3>',
                 'progress'      => $infoTaxiCount/100, // integer
                 'progressClass' => 'progress-bar bg-primary',
-
             ],
-            //Widget de telefonos
+            //Widget de social
             ['type'          => 'progress_white',
-                'class'         => 'card mb-2',
-                'value'         => $phoneCount,
-                'description'   => '<h3>Cantidad de <b>telefonos</b></h3>',
-                'progress'      => $phoneCount/100, // integer
+                'wrapper' => ['class' => 'col-sm-6 col-md-6'], // optional
+                 'class'   => 'card bg-dark text-white', // optional
+                'value'         => $socialServiceCount,
+                'description'   => '<h3>Cantidad de canales al aire en <b>servicios sociales</b></h3>',
+                'progress'      => $socialServiceCount/100, // integer
                 'progressClass' => 'progress-bar bg-primary',
             ],
             [
                 'type'       => 'card',
                  'wrapper' => ['class' => 'col-sm-6 col-md-4',
-                               'style' => 'width:100%;',], // optional
+                               'style' => 'display:flex; justify-content:center;width:100%;',], // optional
                  'class'   => 'card bg-dark text-white', // optional
                 'content'    => [
                     'header' => '<h1 style="text-align: center">Captura de pantalla</h1>', // optional
-                    'body'   => ' <iframe src="http://181.118.186.249:9000/retorno.html" width="750" height="450"></iframe>',
+                    'body'   => ' <iframe src="http://181.118.186.249:9000/retorno.html"  width="750" height="450"></iframe>',
 
                 ]
             ],

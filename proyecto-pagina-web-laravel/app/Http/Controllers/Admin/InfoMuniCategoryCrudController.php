@@ -18,7 +18,6 @@ class InfoMuniCategoryCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\ReorderOperation;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -41,9 +40,9 @@ class InfoMuniCategoryCrudController extends CrudController
     protected function setupListOperation()
     {
 
-        CRUD::column('image')->type('image')->prefix('storage/');
-        CRUD::column('datein')->type('datetime');
-        CRUD::column('dateout')->type('datetime');
+        CRUD::column('image')->label("imagen")->type('image')->prefix('storage/');
+        CRUD::column('datein')->label("fecha de entrada")->type('datetime');
+        CRUD::column('dateout')->label("fecha de salida")->type('datetime');
 
         CRUD::addColumn([
             'name' => 'ACTIVO', // Nombre de la columna en la base de datos
@@ -114,14 +113,7 @@ class InfoMuniCategoryCrudController extends CrudController
     {
         $this->setupCreateOperation();
     }
-    protected function setupReorderOperation()
-    {
-        // define which model attribute will be shown on draggable elements
-        CRUD::set('reorder.label', 'title');
-        // define how deep the admin is allowed to nest the items
-        // for infinite levels, set it to 0
-        CRUD::set('reorder.max_level', 2);
-    }
+
     public function getEstado($datein,$dateout)
     {
         // Obtén la fecha de entrada del modelo

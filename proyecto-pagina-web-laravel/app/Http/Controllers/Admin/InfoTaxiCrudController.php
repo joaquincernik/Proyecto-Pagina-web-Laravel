@@ -39,8 +39,11 @@ class InfoTaxiCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::setFromDb(); // set columns from db columns.
-        CRUD::column('image')->type('image')->prefix('storage/');
+        //CRUD::setFromDb(); // set columns from db columns.
+        CRUD::column('image')->label("imagen")->type('image')->prefix('storage/');
+        CRUD::column('datein')->label("fecha de entrada")->type('datetime');
+        CRUD::column('dateout')->label("fecha de salida")->type('datetime');
+
         /**
          * Columns can be defined using the fluent syntax:
          * - CRUD::column('price')->type('number');
