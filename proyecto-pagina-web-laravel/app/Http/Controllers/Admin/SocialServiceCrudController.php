@@ -28,7 +28,7 @@ class SocialServiceCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\SocialService::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/social-service');
-        CRUD::setEntityNameStrings('social service', 'social services');
+        CRUD::setEntityNameStrings('social service', 'servicios sociales');
     }
 
     /**
@@ -41,10 +41,9 @@ class SocialServiceCrudController extends CrudController
     {
         CRUD::setFromDb(); // set columns from db columns.
 
-        /**
-         * Columns can be defined using the fluent syntax:
-         * - CRUD::column('price')->type('number');
-         */
+        //In order to not showing a column:
+        CRUD::column('gender')->remove(); 
+       
     }
 
     /**

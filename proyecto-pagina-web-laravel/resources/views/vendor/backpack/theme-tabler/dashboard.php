@@ -4,18 +4,20 @@ use Backpack\CRUD\app\Library\Widget;
 
 //Defnimos las variables donde almacenaremos la cantidad de Canales y telefonos en las variables
 $phoneCount = \App\Models\Phone::count();
-$socialServiceCount = \App\Models\SocialService::count();
 $infoMuniCount = \App\Models\InfoMuniCategory::count();
 $infoTaxiCount = \App\Models\InfoTaxi::count();
 $infoCoopCount = \App\Models\Infocoop::count();
 $infoCoopArray= \App\Models\Infocoop::all();
 $infoMuniArray= \App\Models\InfoMuniCategory::all();
+$serviciosSocialesArray=\App\Models\SocialService::all();
 $infoCoopActiveCounter=0;
 $infoCoopProgrammedCounter=0;
 $infoCoopExpiredCounter=0;
 $infoMuniExpiredCounter=0;
 $infoMuniProgrammedCounter=0;
 $infoMuniActiveCounter=0;
+$socialServiceCount=0;
+
 
 
 //Conteo de canales activos de Infocoop
@@ -53,6 +55,17 @@ foreach ($infoMuniArray as $channel){
         }
         if($fechaActual>$fechaFinal){
             $infoMuniExpiredCounter++;
+        }
+    }
+}
+//Conteo de servicios sociales con respecto al burial
+foreach ($serviciosSocialesArray as $servicio){
+    if($servicio->burial!=null){
+        $fechaBurial=$servicio->burial;
+        $fechaActual=now();
+    
+        if ( $fechaActual>$fechaBurial) {
+            $socialServiceCount++;
         }
     }
 
@@ -104,7 +117,7 @@ Widget::add(
                 'wrapper' => ['class' => 'col-sm-6 col-md-6'], // optional
                  'class'   => 'card bg-dark text-white', // optional
                 'value'         => $socialServiceCount,
-                'description'   => '<h3>Cantidad de canales al aire en <b>servicios sociales</b></h3>',
+                'description'   => '<h3>Cantidad de notas menores a fecha actual de <b>servicios sociales</b></h3>',
                 'progress'      => $socialServiceCount/100, // integer
                 'progressClass' => 'progress-bar bg-primary',
             ],
