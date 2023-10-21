@@ -53,7 +53,7 @@ class ExceptionPharmacyRequest extends FormRequest
     public function messages()
     {
         return [
-            //
+            'date.required'=>'Debes ingresar una fecha',
         ];
     }
 }

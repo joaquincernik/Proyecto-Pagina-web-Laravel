@@ -53,7 +53,7 @@ class PharmacyRequest extends FormRequest
     public function messages()
     {
         return [
-            //
+            'order.unique'=>'No se puede repetir el valor de orden'
         ];
     }
 }

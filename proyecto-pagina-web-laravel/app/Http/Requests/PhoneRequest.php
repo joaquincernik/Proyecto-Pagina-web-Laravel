@@ -27,10 +27,8 @@ class PhoneRequest extends FormRequest
     public function rules()
     {
             return[
-                'image'=>'prohibited_unless:title,null|prohibited_unless:content,null
-                |mimes:jpeg,png,jpg,gif,svg|max:2048',
-                'title'=>'required_with:content|required_without:image',
-                'content'=>'required_with:title|required_without:image'
+                'title'=>'required',
+                'content'=>'required'
                 ];
 
     }
@@ -55,7 +53,8 @@ class PhoneRequest extends FormRequest
     public function messages()
     {
         return [
-            //
+            'title.required'=>'Debes ingresar una descripcion',
+            'content.required'=>'Debes ingresar numero'
         ];
     }
 }

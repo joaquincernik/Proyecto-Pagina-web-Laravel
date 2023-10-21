@@ -52,7 +52,7 @@ class SocialServiceRequest extends FormRequest
     public function messages()
     {
         return [
-            //
+            'gender.required'=>'Debes ingresar el genero'
         ];
     }
 }

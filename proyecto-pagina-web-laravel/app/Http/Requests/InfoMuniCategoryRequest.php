@@ -42,7 +42,7 @@ class InfoMuniCategoryRequest extends FormRequest
     public function attributes()
     {
         return [
-            //
+            
         ];
     }
 
@@ -54,7 +54,9 @@ class InfoMuniCategoryRequest extends FormRequest
     public function messages()
     {
         return [
-            //
+            'image.required'=>'Debes ingresar una imagen',
+            'datein.required'=>'Debes ingresar una fecha de entrada',
+            'dateout.required'=>'Debes ingresar una fecha de salida'
         ];
     }
 }
