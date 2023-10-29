@@ -73,7 +73,7 @@ class PhoneCrudController extends CrudController
         CRUD::field([
             'name'      => 'content',
             'label'     => 'Número telefónico',
-            'type'      => 'number',
+            'type'      => 'text',
         ]);
 
         /**

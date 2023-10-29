@@ -17,9 +17,24 @@ $infoMuniExpiredCounter=0;
 $infoMuniProgrammedCounter=0;
 $infoMuniActiveCounter=0;
 $socialServiceCount=0;
+$progressInfoCoop=0;
+$progressInfoMuni=0;
 
+//para la barra de progreso
+if($infoCoopCount==0){
+    $progressInfoCoop=0;
+}
+else{
+    $progressInfoCoop=$infoCoopActiveCounter/$infoCoopCount;
+}
 
+if($infoMuniCount==0){
+    $progressInfoMuni=0;  
+}
+else{
+    $progressInfoMuni=$infoMuniActiveCounter/$infoMuniCount;
 
+}
 //Conteo de canales activos de Infocoop
 foreach ($infoCoopArray as $channel){
     $fechaInicio=$channel->datein;
@@ -86,7 +101,7 @@ Widget::add(
                Noticias programadas:'.$infoMuniProgrammedCounter.'<br>
                Noticias vencidas:'.$infoMuniExpiredCounter.'<br>
                Cantidad total de noticias:'.$infoMuniCount,
-             'progress'      => $infoMuniActiveCounter/$infoMuniCount, // integer
+               'progress'      => $progressInfoMuni,
             'progressClass' => 'progress-bar bg-primary',
             ],
 
@@ -99,7 +114,7 @@ Widget::add(
                Noticias programadas:'.$infoCoopProgrammedCounter.'<br>
                Noticias vencidas:'.$infoCoopExpiredCounter.'<br>
                Cantidad total de noticias:'.$infoCoopCount,
-                'progress'      => $infoCoopActiveCounter/$infoCoopCount, // integer
+               'progress'      => $progressInfoCoop,
                 'progressClass' => 'progress-bar bg-primary',
             ],
 
