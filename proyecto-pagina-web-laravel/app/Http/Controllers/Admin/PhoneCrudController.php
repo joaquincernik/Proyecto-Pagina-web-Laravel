@@ -41,8 +41,20 @@ class PhoneCrudController extends CrudController
     protected function setupListOperation()
     {
 
-        CRUD::column('title');
-        CRUD::column('content');
+        //CRUD::column('title');
+
+
+        CRUD::column([
+            'name'      => 'title',
+            'label'     => 'Descripción',
+            'type'      => 'text',
+        ]);
+
+        CRUD::column([
+            'name'      => 'content',
+            'label'     => 'Numero Telefónico',
+            'type'      => 'text',
+        ]);
         /**
          * Columns can be defined using the fluent syntax:
          * - CRUD::column('price')->type('number');
