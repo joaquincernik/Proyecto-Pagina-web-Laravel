@@ -17,24 +17,9 @@ $infoMuniExpiredCounter=0;
 $infoMuniProgrammedCounter=0;
 $infoMuniActiveCounter=0;
 $socialServiceCount=0;
-$progressInfoCoop=0;
-$progressInfoMuni=0;
 
-//para la barra de progreso
-if($infoCoopCount==0){
-    $progressInfoCoop=0;
-}
-else{
-    $progressInfoCoop=$infoCoopActiveCounter/$infoCoopCount;
-}
 
-if($infoMuniCount==0){
-    $progressInfoMuni=0;  
-}
-else{
-    $progressInfoMuni=$infoMuniActiveCounter/$infoMuniCount;
 
-}
 //Conteo de canales activos de Infocoop
 foreach ($infoCoopArray as $channel){
     $fechaInicio=$channel->datein;
@@ -79,7 +64,7 @@ foreach ($serviciosSocialesArray as $servicio){
         $fechaBurial=$servicio->burial;
         $fechaActual=now();
     
-        if ( $fechaActual>$fechaBurial) {
+        if ( $fechaActual<$fechaBurial) {
             $socialServiceCount++;
         }
     }
@@ -97,11 +82,11 @@ Widget::add(
             'wrapper' => ['class' => 'col-sm-6 col-md-6 mb-4'], // optional
             'class'   => 'card bg-dark text-white',
             'value'         => $infoMuniActiveCounter,
-            'description'   => '<h3>Cantidad de noticias activas en <b>Info Municipal </b></h3>
+            'description'   => '<h3><b>Información Municipal </b></h3>
                Noticias programadas:'.$infoMuniProgrammedCounter.'<br>
                Noticias vencidas:'.$infoMuniExpiredCounter.'<br>
                Cantidad total de noticias:'.$infoMuniCount,
-               'progress'      => $progressInfoMuni,
+             'progress'      => $infoMuniActiveCounter/$infoMuniCount, // integer
             'progressClass' => 'progress-bar bg-primary',
             ],
 
@@ -110,11 +95,11 @@ Widget::add(
             'wrapper' => ['class' => 'col-sm-6 col-md-6 mb-4'], // optional
             'class'   => 'card bg-dark text-white',
                 'value'         => $infoCoopActiveCounter,
-                'description'   => '<h3>Cantidad de noticias activas en <b>Info Cooperativa </b></h3>
+                'description'   => '<h3><b>Información Cooperativa </b></h3>
                Noticias programadas:'.$infoCoopProgrammedCounter.'<br>
                Noticias vencidas:'.$infoCoopExpiredCounter.'<br>
                Cantidad total de noticias:'.$infoCoopCount,
-               'progress'      => $progressInfoCoop,
+                'progress'      => $infoCoopActiveCounter/$infoCoopCount, // integer
                 'progressClass' => 'progress-bar bg-primary',
             ],
 
@@ -123,7 +108,7 @@ Widget::add(
             'wrapper' => ['class' => 'col-sm-6 col-md-6 mb-4'], // optional
             'class'   => 'card bg-dark text-white',
                 'value'         => $infoTaxiCount,
-                'description'   => '<h3>Cantidad de noticias en <b>Info Remises</b></h3>',
+                'description'   => '<h3><b>Información Remises</b></h3>',
                 'progress'      => $infoTaxiCount/100, // integer
                 'progressClass' => 'progress-bar bg-primary',
             ],
@@ -132,7 +117,7 @@ Widget::add(
                 'wrapper' => ['class' => 'col-sm-6 col-md-6'], // optional
                  'class'   => 'card bg-dark text-white', // optional
                 'value'         => $socialServiceCount,
-                'description'   => '<h3>Cantidad de notas menores a fecha actual de <b>servicios sociales</b></h3>',
+                'description'   => '<h3>Información de <b>Servicios sociales</b></h3>',
                 'progress'      => $socialServiceCount/100, // integer
                 'progressClass' => 'progress-bar bg-primary',
             ],

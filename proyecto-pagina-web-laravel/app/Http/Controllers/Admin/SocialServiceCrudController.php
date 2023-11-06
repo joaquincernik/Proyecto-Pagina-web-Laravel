@@ -44,6 +44,12 @@ class SocialServiceCrudController extends CrudController
         //In order to not showing a column:
         CRUD::column('gender')->remove(); 
        
+        CRUD::column('name')->label("Nombre")->type('text');
+        CRUD::column('nickname')->label("Sobrenombre")->type('text');
+        CRUD::column('age')->label("Edad")->type('number');
+        CRUD::column('response')->label("responso")->type('text');
+        CRUD::column('burial')->label("Sepelio")->type('datetime');
+
     }
 
     /**
@@ -67,17 +73,6 @@ class SocialServiceCrudController extends CrudController
             'label'     => 'Nombre de pila',
             'type'      => 'text',
         ]);
-        CRUD::field([
-            'name'      => 'age',
-            'label'     => 'Edad',
-            'type'      => 'number',
-        ]);
-        //RESPONSE (cambiar el label por un nombre identificable
-        CRUD::field([
-            'name'      => 'response',
-            'label'     => 'Response',
-            'type'      => 'text',
-        ]);
 
         //genero
         CRUD::field([
@@ -88,10 +83,28 @@ class SocialServiceCrudController extends CrudController
                 // the key will be stored in the db, the value will be shown as label;
                 0 => "Hombre",
                 1 => "Mujer"
-            ],
+            ]]);
 
+
+        CRUD::field([
+            'name'      => 'age',
+            'label'     => 'Edad',
+            'type'      => 'number',
         ]);
-        CRUD::field('burial')->type('date')->default('2018-09-12');
+        //RESPONSE (cambiar el label por un nombre identificable
+        CRUD::field([
+            'name'      => 'response',
+            'label'     => 'Responso',
+            'type'      => 'text',
+        ]);
+
+        CRUD::field([
+            'name'      => 'burial',
+            'label'     => 'Sepelio',
+            'type'      => 'datetime',
+        ]);
+
+
         /**
          * Fields can be defined using the fluent syntax:
          * - CRUD::field('price')->type('number');
