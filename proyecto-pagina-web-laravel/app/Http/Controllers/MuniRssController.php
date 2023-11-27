@@ -14,7 +14,7 @@ class MuniRssController extends Controller
         $Muni_decoded = json_decode($Muni->getContent(), true);
 
         $feedData = [
-            'InfoMuni' => $Muni,
+            'InfoMuni' => $Muni_decoded,
             'title' => 'Municipalidad RSS Feed',
             'description' => 'Latest phones information',
             'link' => url('/'),

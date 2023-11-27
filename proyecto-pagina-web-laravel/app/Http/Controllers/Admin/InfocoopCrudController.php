@@ -21,10 +21,7 @@ class InfocoopCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\ReorderOperation;
 
 
-    /* ACLARACION: para modicificar la vista de la pagina principal del dashboard
-    modificar lo siguiente :storage/framework/views/b78a18f98ec3b5a269345b4b7f4aa7dc.php*/
-
-
+   
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
      *

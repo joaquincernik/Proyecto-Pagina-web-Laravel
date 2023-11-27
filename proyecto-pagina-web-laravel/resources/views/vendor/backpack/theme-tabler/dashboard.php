@@ -99,7 +99,7 @@ Widget::add(
                Noticias programadas:'.$infoCoopProgrammedCounter.'<br>
                Noticias vencidas:'.$infoCoopExpiredCounter.'<br>
                Cantidad total de noticias:'.$infoCoopCount,
-                'progress'      => $infoCoopActiveCounter/$infoCoopCount, // integer
+                'progress'      => $infoCoopActiveCounter/($infoCoopCount+1), // integer
                 'progressClass' => 'progress-bar bg-primary',
             ],
 
@@ -128,7 +128,7 @@ Widget::add(
                  'class'   => 'card bg-dark text-white', // optional
                 'content'    => [
                     'header' => '<h1 style="text-align: center">Captura de pantalla</h1>', // optional
-                    'body'   => ' <iframe src="http://181.118.186.249:9000/retorno.html"  width="750" height="450"></iframe>',
+                    'body'   => ' <iframe src="http://127.0.0.1/index.html"  width="750" height="450"></iframe>',
 
                 ]
             ],
