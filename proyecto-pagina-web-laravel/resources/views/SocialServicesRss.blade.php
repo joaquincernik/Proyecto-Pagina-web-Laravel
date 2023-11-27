@@ -10,7 +10,7 @@
                 <id>{{ $item['id']}}</id>
                 <gender>{{ $item['gender']}}</gender>
                 <name>{{ $item['name']}}</name>
-                <nickname>{{ $item['nickname']}}</nickname>
+                <cementery>{{ $item['cementery']}}</cementery>
                 <age>{{ $item['age']}}</age>
                 <response>{{ $item['response']}}</response>
                 <burial>{{ $item['burial']}}</burial>

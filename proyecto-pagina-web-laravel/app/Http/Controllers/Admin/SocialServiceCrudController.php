@@ -39,16 +39,17 @@ class SocialServiceCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::setFromDb(); // set columns from db columns.
+        //CRUD::setFromDb(); // set columns from db columns.
 
         //In order to not showing a column:
         CRUD::column('gender')->remove(); 
        
         CRUD::column('name')->label("Nombre")->type('text');
-        CRUD::column('nickname')->label("Sobrenombre")->type('text');
         CRUD::column('age')->label("Edad")->type('number');
+        CRUD::column('cementery')->label("Cementerio")->type('text');
         CRUD::column('response')->label("responso")->type('text');
         CRUD::column('burial')->label("Sepelio")->type('datetime');
+        
 
     }
 
@@ -68,12 +69,7 @@ class SocialServiceCrudController extends CrudController
             'label'     => 'Nombre',
             'type'      => 'text',
         ]);
-        CRUD::field([
-            'name'      => 'nickname',
-            'label'     => 'Nombre de pila',
-            'type'      => 'text',
-        ]);
-
+    
         //genero
         CRUD::field([
             'name'        => 'gender', // the name of the db column
@@ -91,6 +87,14 @@ class SocialServiceCrudController extends CrudController
             'label'     => 'Edad',
             'type'      => 'number',
         ]);
+    
+        CRUD::field([
+            'name'      => 'cementery',
+            'label'     => 'Cementerio',
+            'type'      => 'text',
+        ]);
+
+    
         //RESPONSE (cambiar el label por un nombre identificable
         CRUD::field([
             'name'      => 'response',

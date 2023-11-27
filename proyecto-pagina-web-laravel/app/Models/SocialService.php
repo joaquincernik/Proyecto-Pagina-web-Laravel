@@ -21,7 +21,7 @@ class SocialService extends Model
     // protected $primaryKey = 'id';
      public $timestamps = false;
     protected $guarded = ['id'];
-     protected $fillable = ['gender','name','nickname','age','response','burial'];
+     protected $fillable = ['gender','name','cementery','age','response','burial'];
     // protected $hidden = [];
 
     /*

@@ -6,6 +6,8 @@ use App\Http\Controllers\PharmacyRssController;
 use App\Http\Controllers\MuniRssController;
 use App\Http\Controllers\TaxyRssController;
 use App\Http\Controllers\SocialesRssController;
+use App\Http\Controllers\InfocoopRssController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +31,4 @@ Route::get('/pharmacy/service', [PharmacyRssController::class, 'generateRssFeed'
 Route::get('/muni/service', [MuniRssController::class, 'generateRssFeed']);
 Route::get('/taxy/service', [TaxyRssController::class, 'generateRssFeed']);
 Route::get('/sociales/service', [SocialesRssController::class, 'generateRssFeed']);
+Route::get('/infocoop/service', [InfocoopRssController::class, 'generateRssFeed']);

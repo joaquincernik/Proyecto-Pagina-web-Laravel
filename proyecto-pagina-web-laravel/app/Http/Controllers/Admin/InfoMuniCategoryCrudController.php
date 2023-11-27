@@ -37,10 +37,13 @@ class InfoMuniCategoryCrudController extends CrudController
      * @see  https://backpackforlaravel.com/docs/crud-operation-list-entries
      * @return void
      */
+
+     
     protected function setupListOperation()
     {
 
-        CRUD::column('image')->label("imagen")->type('image')->prefix('storage/');
+        CRUD::column('image')->label("imagen")->type('image')->prefix('storage/');        
+        CRUD::column('datein')->label("fecha de entrada")->type('datetime');
         CRUD::column('datein')->label("fecha de entrada")->type('datetime');
         CRUD::column('dateout')->label("fecha de salida")->type('datetime');
 
