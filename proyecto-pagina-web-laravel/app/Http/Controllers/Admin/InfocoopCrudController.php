@@ -51,28 +51,30 @@ class InfocoopCrudController extends CrudController
        CRUD::column('datein')->label("fecha de entrada")->type('datetime');
        CRUD::column('dateout')->label("fecha de finalizacion")->type('datetime');
        // CRUD::setFromDb(); // set columns from db columns.
-        CRUD::addColumn([
-            'name' => 'ACTIVO', // Nombre de la columna en la base de datos
-            'label' => 'ACTIVO',
-            'type' => 'closure',
-            'function'=> function($entry){
-                if($this->getEstado($entry->datein,$entry->dateout)){
-                    return 'SI';
+        
+       CRUD::addColumn([
+        'name' => 'ACTIVO', // Nombre de la columna en la base de datos
+        'label' => 'ACTIVO',
+        'type' => 'closure',
+        'function'=> function($entry){
+            if($this->getEstado($entry->datein,$entry->dateout)){
+                return 'SI';
+            }
+            else{
+                return 'NO';
+            }
+        },
+        'wrapper' => [
+            'element' => 'span',
+            'class' => function ($crud, $column, $entry, $related_key) {
+                if ($this->getEstado($entry->datein,$entry->dateout)) {
+                    return 'badge bg-success';
                 }
-                else{
-                    return 'NO';
-                }
+                return 'badge bg-warning';
             },
-            'wrapper' => [
-                'element' => 'span',
-                'class' => function ($crud, $column, $entry, $related_key) {
-                    if ($this->getEstado($entry->datein,$entry->dateout)) {
-                        return 'badge bg-success';
-                    }
-                    return 'badge bg-warning';
-                },
-            ],
-        ]);
+        ],
+    ]);
+
         CRUD::orderby('dateout','desc');
 
 
@@ -163,6 +165,5 @@ class InfocoopCrudController extends CrudController
             return 0;
         }
     }
-
 
 }
