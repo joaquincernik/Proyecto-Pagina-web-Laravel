@@ -29,7 +29,7 @@ class PharmacyCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Pharmacy::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/pharmacy');
-        CRUD::setEntityNameStrings('pharmacy', 'pharmacies');
+        CRUD::setEntityNameStrings('pharmacy', 'Farmacias de turno');
     }
 
     /**
