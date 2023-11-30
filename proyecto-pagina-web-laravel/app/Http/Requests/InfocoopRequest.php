@@ -27,9 +27,9 @@ class InfocoopRequest extends FormRequest
     public function rules()
     {
         return[
-            'image'=>'prohibits:title,prohibits:content,required_without_all:title,content',
-            'title'=>'required_with:content|required_without:image',
-            'content'=>'required_with:title|required_without:image',
+            'image'=>'prohibits:title,prohibits:content',
+            'title'=>'required_with:content,prohibits:image',
+            'content'=>'required_with:title',
             'datein'=>'required',
             'dateout'=>'required'
         ];
@@ -60,9 +60,9 @@ class InfocoopRequest extends FormRequest
             'dateout.required'=>'Tienes que agregar una fecha de salida',
             'image.prohibits'=>'No puedes escribir un titulo o contenido si pones una imagen',
             'image.required_without_all:title,content'=>'Debes poner una imagen si no pones titulo ni contenido',
-            'title.required_with:content'=>'Si ingresar un titulo, debes ingresar el contenido',
+            'title.required_with'=>'Si ingresar un titulo, debes ingresar el contenido',
             'required_without'=>'No puedes agregar una imagen si ingresas un titulo o contenido',
-            'content.required_with:title'=>'Si ingresar un contenido, debes ingresar el titulo',
+            'content.required_with'=>'Si ingresar un contenido, debes ingresar el titulo',
             
         ];
     }
