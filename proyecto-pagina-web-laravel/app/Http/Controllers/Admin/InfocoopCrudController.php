@@ -75,8 +75,7 @@ class InfocoopCrudController extends CrudController
         ],
     ]);
 
-        CRUD::orderby('dateout','desc');
-
+       
 
         /**
          * Columns can be defined using the fluent syntax:
