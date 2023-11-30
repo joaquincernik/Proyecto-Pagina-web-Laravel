@@ -47,7 +47,7 @@ class SocialServiceCrudController extends CrudController
         CRUD::column('name')->label("Nombre")->type('text');
         CRUD::column('age')->label("Edad")->type('number');
         CRUD::column('cementery')->label("Cementerio")->type('text');
-        CRUD::column('response')->label("responso")->type('text');
+        CRUD::column('response')->label("Texto auxiliar")->type('text');
         CRUD::column('burial')->label("Sepelio")->type('datetime');
         
 
@@ -98,7 +98,7 @@ class SocialServiceCrudController extends CrudController
         //RESPONSE (cambiar el label por un nombre identificable
         CRUD::field([
             'name'      => 'response',
-            'label'     => 'Responso',
+            'label'     => 'Texto Auxiliar',
             'type'      => 'text',
         ]);
 

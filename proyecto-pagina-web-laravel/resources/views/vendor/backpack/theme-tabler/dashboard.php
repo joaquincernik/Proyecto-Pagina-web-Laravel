@@ -86,7 +86,7 @@ Widget::add(
                Noticias programadas:'.$infoMuniProgrammedCounter.'<br>
                Noticias vencidas:'.$infoMuniExpiredCounter.'<br>
                Cantidad total de noticias:'.$infoMuniCount,
-             'progress'      => $infoMuniActiveCounter/$infoMuniCount, // integer
+             'progress'      => $infoMuniActiveCounter/($infoMuniCount+1), // integer
             'progressClass' => 'progress-bar bg-primary',
             ],
 
@@ -132,8 +132,7 @@ Widget::add(
                                'class'   => 'card bg-dark text-white', // optional
                 'content'    => [
                     'header' => '<h1 style="text-align: center">Retorno</h1>', // optional
-                    //'body'   => ' <iframe src="http://127.0.0.1/index.html"  width="750" height="450"></iframe>',
-                    'body'   => ' <iframe src="http://127.0.0.1/index.html" height="1200" width="100%"></iframe>',
+                    'body'   => ' <iframe src="http://200.85.95.205:8000/index.html"  width="750" height="450"></iframe>',
 
                 ]
             ],
