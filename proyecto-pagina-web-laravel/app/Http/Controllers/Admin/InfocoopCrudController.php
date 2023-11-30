@@ -51,7 +51,7 @@ class InfocoopCrudController extends CrudController
        CRUD::column('datein')->label("fecha de entrada")->type('datetime');
        CRUD::column('dateout')->label("fecha de finalizacion")->type('datetime');
        // CRUD::setFromDb(); // set columns from db columns.
-        
+       CRUD::disableResponsiveTable();
        CRUD::addColumn([
         'name' => 'ACTIVO', // Nombre de la columna en la base de datos
         'label' => 'ACTIVO',
@@ -75,8 +75,7 @@ class InfocoopCrudController extends CrudController
         ],
     ]);
 
-        CRUD::orderby('dateout','desc');
-
+       
 
         /**
          * Columns can be defined using the fluent syntax:

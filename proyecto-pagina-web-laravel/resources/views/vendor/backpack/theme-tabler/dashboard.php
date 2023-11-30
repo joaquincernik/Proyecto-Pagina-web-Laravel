@@ -124,11 +124,16 @@ Widget::add(
             [
                 'type'       => 'card',
                  'wrapper' => ['class' => 'col-sm-6 col-md-4',
-                               'style' => 'display:flex; justify-content:center;width:100%;',], // optional
-                 'class'   => 'card bg-dark text-white', // optional
+                              // 'style' => 'display:flex; justify-content:center;width:100%;margin:10px;',], // optional
+                               'style' => 'position: relative;
+                               overflow: hidden;
+                               width: 100%;
+                               padding-top: 10%;',],
+                               'class'   => 'card bg-dark text-white', // optional
                 'content'    => [
                     'header' => '<h1 style="text-align: center">Retorno</h1>', // optional
-                    'body'   => ' <iframe src="http://127.0.0.1/index.html"  width="750" height="450"></iframe>',
+                    //'body'   => ' <iframe src="http://127.0.0.1/index.html"  width="750" height="450"></iframe>',
+                    'body'   => ' <iframe src="http://127.0.0.1/index.html" height="1200" width="100%"></iframe>',
 
                 ]
             ],
