@@ -78,7 +78,7 @@ class PharmacyRssController extends Controller
             else
             $date1=date("Y-m-d");
 
-            $date2="2021-08-24"; //INICIO DEL ALGORITMO
+            $date2="2021-08-20"; //INICIO DEL ALGORITMO
             $s = strtotime($date1)-strtotime($date2);
             $d = intval($s/86400);
             $s -= $d*86400;
