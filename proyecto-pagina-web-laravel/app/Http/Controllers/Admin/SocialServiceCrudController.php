@@ -28,7 +28,7 @@ class SocialServiceCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\SocialService::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/social-service');
-        CRUD::setEntityNameStrings('social service', 'servicios sociales');
+        CRUD::setEntityNameStrings('Servicios Sociales', 'servicios sociales');
     }
 
     /**

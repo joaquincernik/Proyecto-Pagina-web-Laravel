@@ -28,7 +28,7 @@ class ExceptionPharmacyCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\ExceptionPharmacy::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/exception-pharmacy');
-        CRUD::setEntityNameStrings('exception pharmacy', 'Excepción Farmarcias de Turno');
+        CRUD::setEntityNameStrings('Excepción Farmacias de turno', 'Excepción Farmarcias de Turno');
     }
 
     /**
