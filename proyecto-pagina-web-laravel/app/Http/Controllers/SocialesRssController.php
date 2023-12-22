@@ -32,8 +32,11 @@ class SocialesRssController extends Controller
     {
         $now = now();
 
+	// Perform the comparison in your query
+	$Social = SocialService::where('burial', '>', $now)->orWhereTime('burial', '00:00:00')->get();
+	//
         // Perform the comparison in your query
-        $Social = SocialService::where('burial', '>', $now)->get();
+        //$Social = SocialService::where('burial', '>', $now)->get();
 
         return(response()->json($Social));
 
