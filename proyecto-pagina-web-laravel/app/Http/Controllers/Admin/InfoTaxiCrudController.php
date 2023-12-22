@@ -28,7 +28,7 @@ class InfoTaxiCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\InfoTaxi::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/infoTaxi');
-        CRUD::setEntityNameStrings('infoTaxi', 'Información de Remises');
+        CRUD::setEntityNameStrings('Información de remises', 'Información de Remises');
     }
 
     /**
