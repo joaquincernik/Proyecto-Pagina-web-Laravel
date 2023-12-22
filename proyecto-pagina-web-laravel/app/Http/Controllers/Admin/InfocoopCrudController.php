@@ -102,7 +102,7 @@ class InfocoopCrudController extends CrudController
         CRUD::field([
             'name'      => 'content',
             'label'     => 'Contenido',
-            'type'      => 'text',
+            'type'      => 'textarea',
         ]);
 
 
