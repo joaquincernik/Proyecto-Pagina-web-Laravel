@@ -14,19 +14,23 @@ class MeteoRssController extends Controller
     {
 
         $this->getData();
-        $wind_dir           = $this->data['modulos']['6843']['value'];
-        $humidity           = $this->data['modulos']['6844']['value'];
-        $rain               = $this->data['modulos']['6848']['value'];
-        $dew_point          = $this->data['modulos']['6849']['value'];
-        $temperature        = $this->data['modulos']['6853']['value'];
-        $temperature_max    = $this->data['modulos']['6853']['aggregations']['max'];
-        $temperature_min    = $this->data['modulos']['6853']['aggregations']['min'];
-        $wind_speed         = $this->data['modulos']['6855']['value'];
-        $wind_speed_max     = $this->data['modulos']['6855']['aggregations']['max'];
-        $wind_speed_avg     = $this->data['modulos']['6855']['aggregations']['max'];
+        $feedData = [
+            'title' => 'Información Cooperativa RSS Feed',
+            'description' => 'Latest phones information',
+            'link' => url('/'),
+            'wind_dir'           => $this->convertWindDirection($this->data['modulos']['6843']['value']),
+            'humidity'           => $this->data['modulos']['6844']['value'],
+            'pressure'           => $this->data['modulos']['6848']['value'],
+            'rain'               => $this->data['modulos']['6846']['value'],
+            'dew_point'          => $this->data['modulos']['6849']['value'],
+            'temperature'        => $this->data['modulos']['6853']['value'],
+            'temperature_max'    => $this->data['modulos']['6853']['aggregations']['max'],
+            'temperature_min'    => $this->data['modulos']['6853']['aggregations']['min'],
+            'wind_speed'         => $this->data['modulos']['6855']['value'],
+            'wind_speed_max'     => $this->data['modulos']['6855']['aggregations']['max'],
+            'wind_speed_avg'     => $this->data['modulos']['6855']['aggregations']['max']];
 
-        echo $temperature;
-       //return Response::view('SocialServicesRss', $feedData)->header('Content-Type', 'application/rss+xml');
+       return Response::view('MeteoServiceRss', $feedData)->header('Content-Type', 'application/rss+xml');
    
     }
 
@@ -73,7 +77,6 @@ public function getData()
     if (Cache::has('sensor_data')) 
     {
     // Retrieve the data from the cache
-    echo "cacheado";
     $data = Cache::get('sensor_data');
     } else 
     {
@@ -87,6 +90,26 @@ public function getData()
 
     $this->data=$data;
 }
+
+
+function convertWindDirection($degrees) {
+    $directions = [
+        'Norte', 'Noreste', 'Este', 'Sureste', 'Sur', 'Suroeste', 'Oeste', 'Noroeste', 'Norte'
+    ];
+
+    // Ensure degrees are within 0-360 range
+    $degrees = $degrees % 360;
+    if ($degrees < 0) {
+        $degrees += 360;
+    }
+
+    // Calculate the index for the direction
+    $index = round($degrees / 45);
+
+    return $directions[$index];
+}
+
+
 
 }
 
