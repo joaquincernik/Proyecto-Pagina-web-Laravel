@@ -47,7 +47,13 @@ class InfocoopCrudController extends CrudController
     {
         CRUD::column('image')->label("Imagen")->type('image')->prefix('storage/');
        CRUD::column('title')->label("titulo")->type('text');
-       CRUD::column('content')->label("contenido")->type('text');
+       //CRUD::column('content')->label("contenido")->type('text');
+       $this->crud->addColumn([
+        'name'     => 'content',
+        'type'     => 'text',
+        'label'    => 'dd',
+        'limit'    => 20,
+    ]);
        CRUD::column('datein')->label("fecha de entrada")->type('datetime');
        CRUD::column('dateout')->label("fecha de finalizacion")->type('datetime');
        // CRUD::setFromDb(); // set columns from db columns.
@@ -138,7 +144,57 @@ class InfocoopCrudController extends CrudController
      */
     protected function setupUpdateOperation()
     {
-        $this->setupCreateOperation();
+        CRUD::setValidation(InfocoopRequest::class);
+   //     CRUD::setFromDb(); // set fields from db columns.
+
+        CRUD::field([
+            'name'      => 'title',
+            'label'     => 'Título',
+            'type'      => 'text',
+        ]);
+        CRUD::field([
+            'name'      => 'content',
+            'label'     => 'Contenido',
+            'type'      => 'textarea',
+        ]);
+
+
+        CRUD::field('image')->type('upload')->label('Imagen')->withFiles([
+            'disk' => 'public', // the disk where file will be stored
+            'path' => 'uploads/infocoop',
+        ]);
+
+
+        CRUD::field([
+        'name'      => 'datein',
+        'label'     => 'Fecha de entrada',
+        'type'      => 'datetime',
+    ]);
+        CRUD::field([
+            'name'      => 'dateout',
+            'label'     => 'Fecha de salida',
+            'type'      => 'datetime',
+        ]);
+
+
+        $rules = [
+            'image'=>'prohibits:title,prohibits:content',
+            'title'=>'required_with:content,prohibits:image',
+        'content'=>'required_with:title',
+        'datein'=>'required',
+        'dateout'=>'required'
+    ];
+        $messages = [
+            'datein.required'=>'Tienes que agregar una fecha de entrada',
+            'dateout.required'=>'Tienes que agregar una fecha de salida',
+            'image.prohibits'=>'No puedes escribir un titulo o contenido si pones una imagen',
+            'image.required_without_all:title,content'=>'Debes poner una imagen si no pones titulo ni contenido',
+            'title.required_with'=>'Si ingresar un titulo, debes ingresar el contenido',
+            'required_without'=>'No puedes agregar una imagen si ingresas un titulo o contenido',
+            'content.required_with'=>'Si ingresar un contenido, debes ingresar el titulo',
+           
+        ];
+        $this->crud->setValidation($rules, $messages);
     }
 
 
