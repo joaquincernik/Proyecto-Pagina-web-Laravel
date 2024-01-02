@@ -110,7 +110,29 @@ class InfoTaxiCrudController extends CrudController
      */
     protected function setupUpdateOperation()
     {
-        $this->setupCreateOperation();
+        CRUD::field('image')->type('upload')->label('Imagen')->withFiles([
+            'disk' => 'public', // the disk where file will be stored
+            'path' => 'uploads/infomuni',
+        ]);
+        CRUD::field([
+            'name'      => 'datein',
+            'label'     => 'Fecha de entrada',
+            'type'      => 'datetime',
+        ]);
+        CRUD::field([
+            'name'      => 'dateout',
+            'label'     => 'Fecha de salida',
+            'type'      => 'datetime',
+        ]);
+
+
+        $rules = ['datein'=>'required',
+        'dateout'=>'required'];
+        $messages = [
+            'datein.required'=>'Debes ingresar una fecha de entrada',
+            'dateout.required'=>'Debes ingresar una fecha de salida'
+        ];
+        $this->crud->setValidation($rules, $messages);
     }
     public function getEstado($datein,$dateout)
     {
