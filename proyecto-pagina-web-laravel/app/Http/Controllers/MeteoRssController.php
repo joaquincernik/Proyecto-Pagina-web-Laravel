@@ -16,22 +16,24 @@ class MeteoRssController extends Controller
         $this->getData();
         $feedData = [
             'title' => 'Información Cooperativa RSS Feed',
-            'description' => 'Latest phones information',
+            'description' => '',
             'link' => url('/'),
             'wind_dir'           => $this->convertWindDirection($this->data['modulos']['6843']['value']),
-            'humidity'           => $this->data['modulos']['6844']['value'],
-            'pressure'           => $this->data['modulos']['6848']['value'],
-            'rain'               => $this->data['modulos']['6846']['value'],
-            'dew_point'          => $this->data['modulos']['6849']['value'],
-            'temperature'        => $this->data['modulos']['6853']['value'],
-            'temperature_max'    => $this->data['modulos']['6853']['aggregations']['max'],
-            'temperature_min'    => $this->data['modulos']['6853']['aggregations']['min'],
-            'wind_speed'         => $this->data['modulos']['6855']['value'],
-            'wind_speed_max'     => $this->data['modulos']['6855']['aggregations']['max'],
-            'wind_speed_avg'     => $this->data['modulos']['6855']['aggregations']['max']];
+            'humidity'           => round($this->data['modulos']['6844']['value'],2).' %',
+            'pressure'           => round($this->data['modulos']['6848']['value'],2).' hPa',
+            'rain'               => round($this->data['modulos']['6846']['aggregations']['sum'],2).' mm',
+            'dew_point'          => round($this->data['modulos']['6849']['value'],2).' °C',
+            'temperature'        => round($this->data['modulos']['6853']['value'],2).' °C',
+            'temperature_max'    => round($this->data['modulos']['6853']['aggregations']['max'],2).' °C',
+            'temperature_min'    => round($this->data['modulos']['6853']['aggregations']['min'],2).' °C',
+            'wind_speed'         => round($this->data['modulos']['6855']['value'],2).' Km/h',
+            'wind_speed_max'     => round($this->data['modulos']['6855']['aggregations']['max'],2).' Km/h',
+            'wind_speed_avg'     => round($this->data['modulos']['6855']['aggregations']['avg'],2).' Km/h',
+            'report_time'        => $this->extractTime($this->data['date'])];
 
-       return Response::view('MeteoServiceRss', $feedData)->header('Content-Type', 'application/rss+xml');
-   
+       return Response::view('MeteoServiceRss', $feedData)->header('Content-Type', 'application/rss+xml'); 
+        //var_dump($feedData);
+            
     }
 
 
@@ -69,6 +71,8 @@ public function getDataFromOmx()
     
     curl_close($curl);
     return($data);
+
+
 }
 
 public function getData()
@@ -109,7 +113,23 @@ function convertWindDirection($degrees) {
     return $directions[$index];
 }
 
+    function extractTime($inputDate)
+    {
+    // Split the input string into an array using ' ' (space) as the delimiter
+    $parts = explode(' ', $inputDate);
 
+    // Check if the split resulted in an array with at least two elements
+    if (count($parts) < 2) {
+        return 'Invalid date format';
+    }
+
+    // Extract the time part from the second element of the array
+    $timePart = $parts[1];
+
+    // Append ' hs' to the time part
+    return $timePart . ' hs';
+    }
+    
 
 }
 

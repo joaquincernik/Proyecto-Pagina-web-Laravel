@@ -11,7 +11,7 @@
                 <wind_dir>{{$wind_dir}}</wind_dir>
                 <humidity>{{$humidity}}</humidity>
                 <rain>{{$rain}}</rain>
-                <dew_point>{{$wind_dir}}</dew_point>
+                <dew_point>{{$dew_point}}</dew_point>
                 <temperature>{{$temperature}}</temperature>
                 <temperature_max>{{$temperature_max}}</temperature_max>
                 <temperature_min>{{$temperature_min}}</temperature_min>
@@ -19,6 +19,8 @@
                 <wind_speed_max>{{$wind_speed_max}}</wind_speed_max>
                 <wind_speed_avg>{{$wind_speed_avg}}</wind_speed_avg>
                 <pressure>{{$pressure}}</pressure>
+                <report_time>{{$report_time}}</report_time>
+
             </item>
     </channel>
 </rss>
