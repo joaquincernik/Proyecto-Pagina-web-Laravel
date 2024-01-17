@@ -27,7 +27,7 @@ class SocialServiceRequest extends FormRequest
     public function rules()
     {
         return[
-            'gender'=>'required'
+            'gender'=>'required',
         ];
 
     }
@@ -52,7 +52,7 @@ class SocialServiceRequest extends FormRequest
     public function messages()
     {
         return [
-            'gender.required'=>'Debes ingresar el genero'
-        ];
+            'gender.required'=>'Debes ingresar el genero',
+                ];
     }
 }

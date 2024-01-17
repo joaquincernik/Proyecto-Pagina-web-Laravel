@@ -70,6 +70,13 @@ class SocialServiceCrudController extends CrudController
             'type'      => 'text',
         ]);
     
+
+        CRUD::field([
+            'name'      => 'burial',
+            'label'     => 'Sepelio',
+            'type'      => 'datetime',
+        ]);
+
         //genero
         CRUD::field([
             'name'        => 'gender', // the name of the db column
