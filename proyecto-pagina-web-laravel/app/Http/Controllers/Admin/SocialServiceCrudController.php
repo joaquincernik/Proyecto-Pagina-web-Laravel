@@ -49,7 +49,28 @@ class SocialServiceCrudController extends CrudController
         CRUD::column('cementery')->label("Cementerio")->type('text');
         CRUD::column('response')->label("Texto auxiliar")->type('text');
         CRUD::column('burial')->label("Sepelio")->type('date');
-        
+        CRUD::addColumn([
+            'name' => 'time', // Nombre de la columna en la base de datos
+            'label' => 'Horario',
+            'type' => 'closure',
+            'function'=> function($entry){
+                if($entry->time==null){
+                    return 'Horario a confirmar';
+                }
+                else{
+                    return $entry->time;
+                }
+            },
+            'wrapper' => [
+                'element' => 'span',
+                'class' => function ($crud, $column, $entry, $related_key) {
+                    if ($entry->time==null) {
+                        return 'badge bg-warning';
+                    }
+                    return 'badge bg-success';
+                },
+            ],
+        ]);
 
     }
 
@@ -76,7 +97,18 @@ class SocialServiceCrudController extends CrudController
             'label'     => 'Sepelio',
             'type'      => 'date',
         ]);
-        
+        CRUD::field([
+            'name'      => 'time',
+            'label'     => 'Horario',
+            'type'      => 'time',
+            'hint'  => 'Ingrese el horario estipulado, si no lo tiene active el boton "Horario a confirmar"',
+            
+        ]);
+        CRUD::field([
+            'name'      => 'button',
+            'label'     => 'Horario a confirmar',
+            'type'      => 'switch',
+        ]);
 
         //genero
         CRUD::field([

@@ -18,10 +18,10 @@ class SocialService extends Model
     */
 
     protected $table = 'social_services';
-    // protected $primaryKey = 'id';
+   //  protected $primaryKey = 'id';
      public $timestamps = false;
     protected $guarded = ['id'];
-     protected $fillable = ['gender','name','cementery','age','response','burial','button'];
+     protected $fillable = ['gender','name','cementery','age','response','burial','time','button'];
     // protected $hidden = [];
 
     /*

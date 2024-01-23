@@ -168,12 +168,12 @@ class InfocoopCrudController extends CrudController
         CRUD::field([
         'name'      => 'datein',
         'label'     => 'Fecha de entrada',
-        'type'      => 'datetime',
+        'type'      => 'date',
     ]);
         CRUD::field([
             'name'      => 'dateout',
             'label'     => 'Fecha de salida',
-            'type'      => 'datetime',
+            'type'      => 'date',
         ]);
 
 
