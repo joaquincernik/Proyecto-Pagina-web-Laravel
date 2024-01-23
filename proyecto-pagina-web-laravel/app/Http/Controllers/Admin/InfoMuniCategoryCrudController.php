@@ -43,9 +43,8 @@ class InfoMuniCategoryCrudController extends CrudController
     {
 
         CRUD::column('image')->label("imagen")->type('image')->prefix('storage/');        
-        CRUD::column('datein')->label("fecha de entrada")->type('datetime');
-        CRUD::column('datein')->label("fecha de entrada")->type('datetime');
-        CRUD::column('dateout')->label("fecha de salida")->type('datetime');
+        CRUD::column('datein')->label("fecha de entrada")->type('date');
+        CRUD::column('dateout')->label("fecha de salida")->type('date');
 
         CRUD::addColumn([
             'name' => 'ACTIVO', // Nombre de la columna en la base de datos
@@ -93,12 +92,12 @@ class InfoMuniCategoryCrudController extends CrudController
         CRUD::field([
             'name'      => 'datein',
             'label'     => 'Fecha de entrada',
-            'type'      => 'datetime',
+            'type'      => 'date',
         ]);
         CRUD::field([
             'name'      => 'dateout',
             'label'     => 'Fecha de salida',
-            'type'      => 'datetime',
+            'type'      => 'date',
         ]);
         /**
          * Fields can be defined using the fluent syntax:
@@ -121,12 +120,12 @@ class InfoMuniCategoryCrudController extends CrudController
         CRUD::field([
             'name'      => 'datein',
             'label'     => 'Fecha de entrada',
-            'type'      => 'datetime',
+            'type'      => 'date',
         ]);
         CRUD::field([
             'name'      => 'dateout',
             'label'     => 'Fecha de salida',
-            'type'      => 'datetime',
+            'type'      => 'date',
         ]);
      
         $rules = [

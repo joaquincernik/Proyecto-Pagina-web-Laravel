@@ -48,7 +48,7 @@ class SocialServiceCrudController extends CrudController
         CRUD::column('age')->label("Edad")->type('number');
         CRUD::column('cementery')->label("Cementerio")->type('text');
         CRUD::column('response')->label("Texto auxiliar")->type('text');
-        CRUD::column('burial')->label("Sepelio")->type('datetime');
+        CRUD::column('burial')->label("Sepelio")->type('date');
         
 
     }
@@ -74,8 +74,9 @@ class SocialServiceCrudController extends CrudController
         CRUD::field([
             'name'      => 'burial',
             'label'     => 'Sepelio',
-            'type'      => 'datetime',
+            'type'      => 'date',
         ]);
+        
 
         //genero
         CRUD::field([
@@ -109,13 +110,7 @@ class SocialServiceCrudController extends CrudController
             'type'      => 'text',
         ]);
 
-        CRUD::field([
-            'name'      => 'burial',
-            'label'     => 'Sepelio',
-            'type'      => 'datetime',
-        ]);
-
-
+     
         /**
          * Fields can be defined using the fluent syntax:
          * - CRUD::field('price')->type('number');

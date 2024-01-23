@@ -54,8 +54,8 @@ class InfocoopCrudController extends CrudController
         'label'    => 'dd',
         'limit'    => 20,
     ]);
-       CRUD::column('datein')->label("fecha de entrada")->type('datetime');
-       CRUD::column('dateout')->label("fecha de finalizacion")->type('datetime');
+       CRUD::column('datein')->label("fecha de entrada")->type('date');
+       CRUD::column('dateout')->label("fecha de finalizacion")->type('date');
        // CRUD::setFromDb(); // set columns from db columns.
        CRUD::disableResponsiveTable();
        CRUD::addColumn([
@@ -121,12 +121,12 @@ class InfocoopCrudController extends CrudController
         CRUD::field([
         'name'      => 'datein',
         'label'     => 'Fecha de entrada',
-        'type'      => 'datetime',
+        'type'      => 'date',
     ]);
         CRUD::field([
             'name'      => 'dateout',
             'label'     => 'Fecha de salida',
-            'type'      => 'datetime',
+            'type'      => 'date',
         ]);
 
 
