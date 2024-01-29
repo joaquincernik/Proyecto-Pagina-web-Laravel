@@ -89,14 +89,22 @@ class SocialServiceCrudController extends CrudController
             'name'      => 'name',
             'label'     => 'Nombre',
             'type'      => 'text',
+           
         ]);
     
 
-        CRUD::field([
+       /* CRUD::field([
             'name'      => 'burial',
             'label'     => 'Sepelio',
             'type'      => 'date',
+        ]);*/
+        CRUD::addField([
+            'name'  => 'burial',
+            'type'  => 'date',
+            'label' => 'Sepelio',
+           
         ]);
+    
         CRUD::field([
             'name'      => 'time',
             'label'     => 'Horario',
@@ -108,6 +116,7 @@ class SocialServiceCrudController extends CrudController
             'name'      => 'button',
             'label'     => 'Horario a confirmar',
             'type'      => 'switch',
+            
         ]);
 
         //genero
