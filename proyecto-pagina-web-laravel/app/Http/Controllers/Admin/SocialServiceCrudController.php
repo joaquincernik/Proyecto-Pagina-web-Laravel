@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use Backpack\CRUD\app\Library\Widget;
 use App\Http\Requests\SocialServiceRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
@@ -71,7 +71,7 @@ class SocialServiceCrudController extends CrudController
                 },
             ],
         ]);
-
+       
     }
 
     /**
@@ -151,7 +151,8 @@ class SocialServiceCrudController extends CrudController
             'type'      => 'text',
         ]);
 
-     
+        Widget::add()->type('script')
+        ->content('resources/assets/js/scriptSocialService.js')->to('before_content');
         /**
          * Fields can be defined using the fluent syntax:
          * - CRUD::field('price')->type('number');
