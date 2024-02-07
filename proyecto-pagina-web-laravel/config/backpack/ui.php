@@ -94,7 +94,7 @@ return [
 
     // CSS files that are loaded in all pages, using Laravel's asset() helper
     'styles' => [
-        // 'styles/example.css',
+        '/resources/assets/css/miEstilo.css',
         // 'https://some-cdn.com/example.css',
     ],
 

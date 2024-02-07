@@ -130,21 +130,7 @@ Widget::add(
                                'class'   => 'card bg-dark text-white clase', // optional
                 'content'    => [
                     'header' => '<h1 id="hola"  style="text-align: center">Retorno</h1>', // optional
-		    'body'   => '<div style="
-           
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            padding-top: 75%;"><iframe src="http://200.85.95.205:8000/index.html" style="
-              
-                position: absolute;
-                top: 0;
-                left: 0;
-                bottom: 0;
-                right: 0;
-                width: 100%;
-                height: 100%;
-                ></iframe></div>',
+		    'body'   => '<iframe width="750" height="450" src="http://200.85.95.205:8000/index.html"></iframe>',
 
                 ]
             ],
