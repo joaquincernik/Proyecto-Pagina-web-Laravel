@@ -28,7 +28,7 @@ class SocialServiceRequest extends FormRequest
     {
         return[
             'gender'=>'required',
-            'time'=>'prohibited_if:button,1|required_if:button,0',
+            
 
         ];
 
@@ -55,8 +55,6 @@ class SocialServiceRequest extends FormRequest
     {
         return [
             'gender.required'=>'Debes ingresar el genero',
-            'time.prohibited_if'=>'Si ingresas el horario debes desactivar el boton de "Horario a confirmar"',
-            'time.required_if'=>'Debes activar el boton de "Horario en confirmar" si no ingresas el horario estipulado',
                 ];
     }
 }

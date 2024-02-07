@@ -48,23 +48,25 @@ class SocialServiceCrudController extends CrudController
         CRUD::column('age')->label("Edad")->type('number');
         CRUD::column('cementery')->label("Cementerio")->type('text');
         CRUD::column('response')->label("Texto auxiliar")->type('text');
-        CRUD::column('burial')->label("Sepelio")->type('date');
+       /* CRUD::column('burial')->label("Sepelio")->type('date');
+        CRUD::column('full_burial')->label("Sepelio")->type('datetime');*/
+
         CRUD::addColumn([
-            'name' => 'time', // Nombre de la columna en la base de datos
-            'label' => 'Horario',
+            'name' => 'burial', // Nombre de la columna en la base de datos
+            'label' => 'Sepelio',
             'type' => 'closure',
             'function'=> function($entry){
-                if($entry->time==null){
-                    return 'Horario a confirmar';
+                if($entry->burial==null){
+                    return $entry->full_burial;
                 }
                 else{
-                    return $entry->time;
+                    return $entry->burial;
                 }
             },
             'wrapper' => [
                 'element' => 'span',
                 'class' => function ($crud, $column, $entry, $related_key) {
-                    if ($entry->time==null) {
+                    if ($entry->full_burial==null) {
                         return 'badge bg-warning';
                     }
                     return 'badge bg-success';
@@ -92,32 +94,28 @@ class SocialServiceCrudController extends CrudController
            
         ]);
     
-
-       /* CRUD::field([
-            'name'      => 'burial',
-            'label'     => 'Sepelio',
-            'type'      => 'date',
-        ]);*/
+        CRUD::field([
+            'name'      => 'button',
+            'label'     => 'Horario a confirmar',
+            'type'      => 'switch',
+            'hint'      =>  'Si no tiene un horario definido active el boton'
+            
+        ]);
         CRUD::addField([
-            'name'  => 'burial',
-            'type'  => 'date',
+            'name'  => 'full_burial',
+            'type'  => 'datetime',
             'label' => 'Sepelio',
            
         ]);
     
         CRUD::field([
-            'name'      => 'time',
-            'label'     => 'Horario',
-            'type'      => 'time',
-            'hint'  => 'Ingrese el horario estipulado, si no lo tiene active el boton "Horario a confirmar"',
+            'name'      => 'burial',
+            'label'     => 'Sepelio',
+            'type'      => 'date',
+            //'hint'  => 'Ingrese el horario estipulado, si no lo tiene active el boton "Horario a confirmar"',
             
         ]);
-        CRUD::field([
-            'name'      => 'button',
-            'label'     => 'Horario a confirmar',
-            'type'      => 'switch',
-            
-        ]);
+   
 
         //genero
         CRUD::field([
@@ -152,7 +150,7 @@ class SocialServiceCrudController extends CrudController
         ]);
 
         Widget::add()->type('script')
-        ->content('resources/assets/js/scriptSocialService.js')->to('before_content');
+        ->content(('assets/js/admin/forms/socialServiceScript.js'));
         /**
          * Fields can be defined using the fluent syntax:
          * - CRUD::field('price')->type('number');
